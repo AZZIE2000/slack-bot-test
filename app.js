@@ -162,15 +162,14 @@ const oauthParams = {
 
 // Function to generate a random nonce
 function generateNonce() {
-
-  return new Date.now().toString();
+  return Date.now().toString();
 }
 
 // Function to generate a timestamp
 function generateTimestamp() {
   // Implement your own logic to generate a timestamp
   // For example, you can use Date.now()
-  return new Date.now().toString();
+  return Date.now().toString();
 }
 
 // Generate the OAuth header with the required parameters
@@ -180,19 +179,19 @@ const oauthHeader = generateOAuthHeader(oauthParams);
 const apiUrl = "https://api.twitter.com/1.1/account_activity/webhooks.json";
 
 // Send the POST request to register the webhook
-axios
-  .post(apiUrl, qs.stringify({ url: webhookURL }), {
-    headers: {
-      Authorization: oauthHeader,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  })
-  .then((response) => {
-    console.log("Webhook registered successfully:", response.data);
-  })
-  .catch((error) => {
-    console.error("Error registering webhook:", error);
-  });
+// axios
+//   .post(apiUrl, qs.stringify({ url: webhookURL }), {
+//     headers: {
+//       Authorization: oauthHeader,
+//       "Content-Type": "application/x-www-form-urlencoded",
+//     },
+//   })
+//   .then((response) => {
+//     console.log("Webhook registered successfully:", response.data);
+//   })
+//   .catch((error) => {
+//     console.error("Error registering webhook:", error);
+//   });
 
 // Function to generate the OAuth header
 function generateOAuthHeader(params) {
@@ -203,3 +202,5 @@ function generateOAuthHeader(params) {
 
   return `OAuth ${orderedParams}`;
 }
+
+console.log(oauthHeader);
